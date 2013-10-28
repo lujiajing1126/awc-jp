@@ -46,11 +46,11 @@
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">5</span></a>
       <ul>
-        <li><a href="index2.html">场次管理</a></li>
-        <li><a href="gallery.html">评委管理</a></li>
-        <li><a href="calendar.html">查询结果</a></li>
-        <li><a href="invoice.html">答辩计划管理</a></li>
-        <li><a href="chat.html">社团信息维护</a></li>
+        <li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
+        <li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
+        <li><a href="{:U('Projmgr/showresult')}">查询结果</a></li>
+        <li><a href="{:U('Projmgr/editsch')}">答辩计划管理</a></li>
+        <li><a href="{:U('Projmgr/editassn')}">社团信息维护</a></li>
       </ul>
     </li>
   </ul>
@@ -112,12 +112,9 @@
 <!--end-main-container-part-->
 
 <!--Footer-part-->
-
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2013 &copy; Powered By Matrix Admin. All right reserved by <a href="http://sachme.net/">Megrez</a> </div>
-</div>
-
+<include file="_partial:footerpart" />
 <!--end-Footer-part-->
+
 <import type="js" file="js.home.jquery#min"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.jquery#ui#custom"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.bootstrap#min"  basepath="{:C('PublicDirectory')}" />

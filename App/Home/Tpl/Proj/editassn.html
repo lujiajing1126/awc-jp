@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>社团评精打分系统-评委打分</title>
+<title>社团评精打分系统</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <import type="css" file="css.home.bootstrap#min"  basepath="{:C('PublicDirectory')}" />
@@ -22,6 +22,7 @@
 </div>
 <!--close-Header-part-->
 
+
 <!--top-Header-menu-->
 <include file="_partial:toptoheader" />
 <!--close-top-Header-menu-->
@@ -32,19 +33,18 @@
   <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </div>
 <!--close-top-serch-->
-
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li><a href="{:U('Index/index')}"><i class="icon icon-home"></i> <span>仪表盘</span></a> </li>
     <li> <a href="{:U('Assn/index')}"><i class="icon icon-th"></i> <span>社团查询</span></a> </li>
-    <li class="submenu active"> <a href="#"><i class="icon icon-pencil"></i> <span>评分</span> <span class="label label-important">2</span></a>
+    <li class="submenu"> <a href="#"><i class="icon icon-pencil"></i> <span>评分</span> <span class="label label-important">2</span></a>
       <ul>
         <li><a href="{:U('Mark/index')}">评委评分</a></li>
         <li><a href="{:U('Mark/index')}">社团部评分</a></li>
       </ul>
     </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">5</span></a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">5</span></a>
       <ul>
         <li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
         <li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
@@ -57,33 +57,23 @@
 </div>
 <!--sidebar-menu-->
 
-
-
-
 <!--main-container-part-->
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb">
-			    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">评分</a> <a href="#" class="current">评委评分</a> </div>
+			<a href="#" title="Go to Home" class="tip-bottom"><i
+				class="icon-home"></i> Home</a> <a href="#" class="current">社团信息维护</a>
 		</div>
-		<h1>评委打分</h1>
+		<h1>社团信息维护</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
-			场次选择：
-			<select>
-  				<option>第一场</option>
-  				<option>第二场</option>
-  				<option>第三场</option>
-  				<option>第四场</option>
- 				<option>第五场</option>
-			</select>
 				<div class="widget-box">
 					<div class="widget-title">
 						<span class="icon"><i class="icon-th"></i></span>
-						<h5>该场次参评社团列表</h5>
+						<h5>社团列表</h5>
 					</div>
 					<div class="widget-content nopadding">
 						<table class="table table-bordered data-table">
@@ -95,7 +85,8 @@
 									<th>分管部门</th>
 									<th>分类</th>
 									<th>社长</th>
-									<th>评分</th>
+									<th>联系方式</th>
+									<th>维护</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -107,7 +98,11 @@
 									<td>{$vo.department}</td>
 									<td>{$vo.type}</td>
 									<td class="center">{$vo.leader}</td>
-									<td><a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+									<td>{$vo.phone}</td>
+									<td>
+										<button class="btn btn-mini" type="button"><i class="icon-pencil"></i></button>
+										<button class="btn btn-mini" type="button"><i class="icon-remove"></i></button>
+									</td>
 								</tr>
 								</volist>
 							</tbody>
@@ -121,23 +116,6 @@
 
 <!--end-main-container-part-->
 
-<!-- Modal Window for mark -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">XXXX社团评精打分表</h3>
-  </div>
-  <div class="modal-body">
-    <p>这里是具体的打分的表格for评委</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary">提交</button>
-  </div>
-</div>
-
-
-
 <!--Footer-part-->
 <include file="_partial:footerpart" />
 <!--end-Footer-part-->
@@ -150,8 +128,5 @@
 <import type="js" file="js.home.jquery#dataTables#min"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix#tables"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.jquery#validate"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.matrix#form_validation"  basepath="{:C('PublicDirectory')}" />
-
 </body>
 </html>
