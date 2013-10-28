@@ -12,12 +12,18 @@ class ProjmgrAction extends CommonAction {
 		$this->display("Proj/editassn");
 	}
 	public function editmarks() {
+		$ProjsInfo = D('Project');
+		$res = $ProjsInfo->select();
+		$this->assign('list',$res);
 		$this->display("Proj/editmarks");
 	}
 	public function showresult(){
 		$this->display("Proj/showret");
 	}
 	public function editsch(){
+		$ProjsInfo = D('Schedule');
+		$res = $ProjsInfo->relation(true)->Select();
+		$this->assign('list',$res);
 		$this->display("Proj/editsch");
 	}
 	public function edituser(){

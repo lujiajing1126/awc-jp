@@ -11,7 +11,7 @@
 
 defined('THINK_PATH') or exit();
 /**
- * ThinkPHP关联模型扩展 
+ * ThinkPHP关联模型扩展
  * @category   Extend
  * @package  Extend
  * @subpackage  Model
@@ -152,7 +152,7 @@ class RelationModel extends Model {
                                 $relationData   =  $model->where($mappingCondition)->field($mappingFields)->find();
                                 if (!empty($val['relation_deep'])){
                                     $model->getRelation($relationData,$val['relation_deep']);
-                                }                                
+                                }
                                 break;
                             case BELONGS_TO:
                                 if(strtoupper($mappingClass)==strtoupper($this->name)) {
@@ -162,11 +162,11 @@ class RelationModel extends Model {
                                     $mappingFk   =   !empty($val['foreign_key'])?$val['foreign_key']:strtolower($model->getModelName()).'_id';     //  关联外键
                                 }
                                 $fk   =  $result[$mappingFk];
-                                $mappingCondition .= " AND {$model->getPk()}='{$fk}'";
+                                $mappingCondition .= " AND {$val['parent_key']}='{$fk}'";
                                 $relationData   =  $model->where($mappingCondition)->field($mappingFields)->find();
                                 if (!empty($val['relation_deep'])){
                                     $model->getRelation($relationData,$val['relation_deep']);
-                                }                                
+                                }
                                 break;
                             case HAS_MANY:
                                 $pk   =  $result[$mappingKey];
@@ -176,10 +176,10 @@ class RelationModel extends Model {
                                 // 延时获取关联记录
                                 $relationData   =  $model->where($mappingCondition)->field($mappingFields)->order($mappingOrder)->limit($mappingLimit)->select();
                                 if (!empty($val['relation_deep'])){
-                                    foreach($relationData as $key=>$data){                                    
+                                    foreach($relationData as $key=>$data){
                                         $model->getRelation($data,$val['relation_deep']);
                                         $relationData[$key]     =   $data;
-                                    }                                      
+                                    }
                                 }
                                 break;
                             case MANY_TO_MANY:
@@ -201,11 +201,11 @@ class RelationModel extends Model {
                                 }
                                 $relationData   =   $this->query($sql);
                                 if (!empty($val['relation_deep'])){
-                                    foreach($relationData as $key=>$data){                                    
+                                    foreach($relationData as $key=>$data){
                                         $model->getRelation($data,$val['relation_deep']);
                                         $relationData[$key]     =   $data;
-                                    }                                      
-                                }                                
+                                    }
+                                }
                                 break;
                         }
                         if(!$return){
@@ -359,7 +359,7 @@ class RelationModel extends Model {
                             }
                             if (!empty($val['relation_deep'])){
                                 $model->opRelation($opType,$mappingData,$val['relation_deep']);
-                            }                               
+                            }
                     }
                 }
             }
