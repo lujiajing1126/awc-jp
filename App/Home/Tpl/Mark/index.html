@@ -13,6 +13,7 @@
 <import type="css" file="font-awesome.css.font-awesome"  basepath="{:C('PublicDirectory')}" />
 <import type="css" file="css.home.jquery#gritter"  basepath="{:C('PublicDirectory')}" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<import type="css" file="custom.css.mark"  basepath="{:C('PublicDirectory')}" />
 </head>
 <body>
 
@@ -67,19 +68,22 @@
 			    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">评分</a> <a href="#" class="current">评委评分</a> </div>
 		</div>
 		<h1>评委打分</h1>
+		<div id="info">
+		<p id="uid">{$_SESSION["awc_uid"]}</p>
+		<p id="pid">{$pid}</p>
+		</div>
 	</div>
 	<div class="container-fluid">
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
-			场次选择：
-			<select>
-  				<option>第一场</option>
-  				<option>第二场</option>
-  				<option>第三场</option>
-  				<option>第四场</option>
- 				<option>第五场</option>
+			<span>场次选择：</span>
+			<select id="selectpro">
+				<volist name="projlist" id="vo2">
+					<option value={$vo2.pid} >{$vo2.pname}场次</option>
+				</volist>
 			</select>
+			<button class="btn btn-primary" id="chpro"><i class="icon-play"></i> 切换场次</button>
 				<div class="widget-box">
 					<div class="widget-title">
 						<span class="icon"><i class="icon-th"></i></span>
@@ -101,13 +105,13 @@
 							<tbody>
 								<volist name="list" id="vo">
 								<tr class="gradeX">
-									<td>{$vo.aid}</td>
+									<td class="awcaid">{$vo.aid}</td>
 									<td>{$vo.name}</td>
-									<td>{$vo.star}</td>
+									<td><if condition="$vo.star eq null">无星级</if></td>
 									<td>{$vo.department}</td>
 									<td>{$vo.type}</td>
 									<td class="center">{$vo.leader}</td>
-									<td><a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+									<td><a role="button" class="btn" data-toggle="modal"><i class="mark icon-pencil"></i></a></td>
 								</tr>
 								</volist>
 							</tbody>
@@ -125,10 +129,63 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">XXXX社团评精打分表</h3>
+    <h3 id="myModalLabel">社团评精打分表</h3>
   </div>
   <div class="modal-body">
-    <p>这里是具体的打分的表格for评委</p>
+    <table width="100%" border="1">
+    	<thead>
+    		<th width="25%">评分项目</th>
+    		<th width="60%">具体要求</th>
+    		<th width="5%" overflow="hidden">打分</th>
+    	</thead>
+    	<tr>
+    		<td rowspan="5">社团基本情况(35分)</td>
+    		<td>财务管理(15分)</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>组织架构（5分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>指导老师参与（5分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>社团潜力评估（5分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>信息化建设（5分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td rowspan="4">社团活动(50分)</td>
+    		<td>与宗旨契合度（5分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>活动影响力（15分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>活动完成质量（15分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>活动成果（15分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td rowspan="2">社团交流（15分）</td>
+    		<td>社团与校内社团、组织交流合作情况(10分)</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    	<tr>
+    		<td>社团与校外社团、组织交流合作情况及影响力（5分）</td>
+    		<td><input type="text" class="awc-mark" /></td>
+    	</tr>
+    </table>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
@@ -152,6 +209,10 @@
 <import type="js" file="js.home.matrix#tables"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.jquery#validate"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix#form_validation"  basepath="{:C('PublicDirectory')}" />
-
+<import type="js" file="seajs.sea"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.config"  basepath="{:C('PublicDirectory')}" />
+<script>
+seajs.use("custom/js/mark");
+</script>
 </body>
 </html>

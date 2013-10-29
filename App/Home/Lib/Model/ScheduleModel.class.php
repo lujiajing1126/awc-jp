@@ -7,9 +7,9 @@ class ScheduleModel extends RelationModel{
 					'mapping_type'    =>BELONGS_TO,
 					'foreign_key'	=>'aid',
 					'class_name'    =>'club',
-					'mapping_fields'	=>'name,department',
+					'mapping_fields'	=>'name,star,department,type,leader',
 					'parent_key'	=>'aid',
-					'as_fields' => 'name,department',
+					'as_fields' => 'name,star,department,type,leader',
 					// 定义更多的关联属性
 			),
 			'MyProject'=>array(
