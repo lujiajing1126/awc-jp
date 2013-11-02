@@ -4,7 +4,12 @@ width:250px;
 }
 input.awc-mark{
 width:50px;
+margin-top:2px;
+margin-bottom:2px;
 }
 div#info{
 display:none;
+}
+.modal-header > h3{
+display:inline;
 }
