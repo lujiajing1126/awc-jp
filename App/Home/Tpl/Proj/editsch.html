@@ -4,125 +4,201 @@
 <title>社团评精打分系统</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<import type="css" file="css.home.bootstrap#min"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="css.home.bootstrap-responsive#min"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="css.home.uniform"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="css.home.select2"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="css.home.matrix-style"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="css.home.matrix-media"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="font-awesome.css.font-awesome"  basepath="{:C('PublicDirectory')}" />
-<import type="css" file="css.home.jquery#gritter"  basepath="{:C('PublicDirectory')}" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<import type="css" file="css.home.bootstrap#min"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="css.home.bootstrap-responsive#min"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="css.home.uniform"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="css.home.select2"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="css.home.matrix-style"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="css.home.matrix-media"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="font-awesome.css.font-awesome"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="css.home.jquery#gritter"
+	basepath="{:C('PublicDirectory')}" />
+<import type="css" file="custom.css.sch"
+	basepath="{:C('PublicDirectory')}" />
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800'
+	rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
-<!--Header-part-->
-<div id="header">
-  <h1><a href="dashboard.html">社团评精</a></h1>
-</div>
-<!--close-Header-part-->
-
-
-<!--top-Header-menu-->
-<include file="_partial:toptoheader" />
-<!--close-top-Header-menu-->
-
-<!--start-top-serch-->
-<div id="search">
-  <input type="text" placeholder="Search here..."/>
-  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
-</div>
-<!--close-top-serch-->
-<!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-  <ul>
-    <li><a href="{:U('Index/index')}"><i class="icon icon-home"></i> <span>仪表盘</span></a> </li>
-    <li> <a href="{:U('Assn/index')}"><i class="icon icon-th"></i> <span>社团查询</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-pencil"></i> <span>评分</span> <span class="label label-important">2</span></a>
-      <ul>
-        <li><a href="{:U('Mark/index')}">评委评分</a></li>
-        <li><a href="{:U('Mark/index')}">社团部评分</a></li>
-      </ul>
-    </li>
-    <li class="submenu active"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">5</span></a>
-      <ul>
-        <li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
-        <li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
-        <li><a href="{:U('Projmgr/showresult')}">查询结果</a></li>
-        <li><a href="{:U('Projmgr/editsch')}">答辩计划管理</a></li>
-        <li><a href="{:U('Projmgr/editassn')}">社团信息维护</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-<!--sidebar-menu-->
-
-<!--main-container-part-->
-<div id="content">
-	<div id="content-header">
-		<div id="breadcrumb">
-			<a href="#" title="Go to Home" class="tip-bottom"><i
-				class="icon-home"></i> Home</a> <a href="#" class="current">评精计划表</a>
-		</div>
-		<h1>计划表管理</h1>
+	<!--Header-part-->
+	<div id="header">
+		<h1>
+			<a href="dashboard.html">社团评精</a>
+		</h1>
 	</div>
-	<div class="container-fluid">
-		<hr>
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="widget-box">
-					<div class="widget-title">
-						<span class="icon"><i class="icon-th"></i></span>
-						<h5>计划表</h5>
-					</div>
-					<div class="widget-content nopadding">
-						<table class="table table-bordered data-table">
-							<thead>
-								<tr>
-									<th>记录编号</th>
-									<th>场次编号</th>
-									<th>场次名称</th>
-									<th>参与社团编号</th>
-									<th>参与社团名称</th>
-									<th>维护</th>
-								</tr>
-							</thead>
-							<tbody>
-								<volist name="list" id="vo">
-								<tr class="gradeX">
-									<td>{$vo.paid}</td>
-									<td>{$vo.pid}</td>
-									<td>{$vo.pname}</td>
-									<td>{$vo.aid}</td>
-									<td>{$vo.name}</td>
-									<td>
-										<button class="btn btn-mini" type="button"><i class="icon-pencil"></i></button>
-										<button class="btn btn-mini" type="button"><i class="icon-remove"></i></button>
-									</td>
-								</tr>
-								</volist>
-							</tbody>
-						</table>
+	<!--close-Header-part-->
+
+
+	<!--top-Header-menu-->
+	<include file="_partial:toptoheader" />
+	<!--close-top-Header-menu-->
+
+	<!--start-top-serch-->
+	<div id="search">
+		<input type="text" placeholder="Search here..." />
+		<button type="submit" class="tip-bottom" title="Search">
+			<i class="icon-search icon-white"></i>
+		</button>
+	</div>
+	<!--close-top-serch-->
+	<!--sidebar-menu-->
+	<div id="sidebar">
+		<a href="#" class="visible-phone"><i class="icon icon-home"></i>
+			Dashboard</a>
+		<ul>
+			<li><a href="{:U('Index/index')}"><i class="icon icon-home"></i>
+					<span>仪表盘</span></a></li>
+			<li><a href="{:U('Assn/index')}"><i class="icon icon-th"></i>
+					<span>社团查询</span></a></li>
+			<li class="submenu"><a href="#"><i class="icon icon-pencil"></i>
+					<span>评分</span> <span class="label label-important">2</span></a>
+				<ul>
+					<li><a href="{:U('Mark/index')}">评委评分</a></li>
+					<li><a href="{:U('Mark/index')}">社团部评分</a></li>
+				</ul></li>
+			<li class="submenu active"><a href="#"><i
+					class="icon icon-file"></i> <span>项目管理</span> <span
+					class="label label-important">5</span></a>
+				<ul>
+					<li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
+					<li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
+					<li><a href="{:U('Projmgr/showresult')}">查询结果</a></li>
+					<li><a href="{:U('Projmgr/editsch')}">答辩计划管理</a></li>
+					<li><a href="{:U('Projmgr/editassn')}">社团信息维护</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	<!--sidebar-menu-->
+
+	<!--main-container-part-->
+	<div id="content">
+		<div id="content-header">
+			<div id="breadcrumb">
+				<a href="#" title="Go to Home" class="tip-bottom"><i
+					class="icon-home"></i> Home</a> <a href="#" class="current">评精计划表</a>
+			</div>
+			<h1>计划表管理</h1>
+		</div>
+		<div class="container-fluid">
+			<hr>
+			<div class="row-fluid">
+				<div class="span12">
+					<a href="#myModal" role="button" class="btn" data-toggle="modal"><i
+						class="icon-plus"></i> 添加计划</a>
+					<div class="widget-box">
+						<div class="widget-title">
+							<span class="icon"><i class="icon-th"></i></span>
+							<h5>计划表</h5>
+						</div>
+						<div class="widget-content nopadding">
+							<table class="table table-bordered data-table">
+								<thead>
+									<tr>
+										<th>记录编号</th>
+										<th>场次编号</th>
+										<th>场次名称</th>
+										<th>参与社团编号</th>
+										<th>参与社团名称</th>
+										<th>维护</th>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="list" id="vo">
+									<tr class="gradeX">
+										<td>{$vo.paid}</td>
+										<td>{$vo.pid}</td>
+										<td>{$vo.pname}</td>
+										<td>{$vo.aid}</td>
+										<td>{$vo.name}</td>
+										<td>
+											<button class="btn btn-mini" type="button">
+												<i class="icon-remove"></i>
+											</button>
+										</td>
+									</tr>
+									</volist>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!--end-main-container-part-->
+
+	<!--Footer-part-->
+	<include file="_partial:footerpart" />
+	<!--end-Footer-part-->
+
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 id="myModalLabel">添加计划</h3>
+		</div>
+		<div class="modal-body">
+		<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>提醒！</strong> 请不要在已有计划中重复添加已有社团，以免出错
 </div>
+			<form>
+				<div class="control-group">
+					<label class="control-label" for="project">场次选择：</label>
+					<div class="controls">
+						<select>
+						<volist name="list2" id="vo2">
+						<option>{$vo2.pname}</option>
+						</volist>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">添加社团：</label>
+					<div class="controls">
+						<select multiple>
+						<volist name="list3" id="vo3">
+						<option>{$vo3.name}</option>
+						</volist>
+						</select>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+			<button class="btn btn-primary">提交计划</button>
+		</div>
+	</div>
 
-<!--end-main-container-part-->
-
-<!--Footer-part-->
-<include file="_partial:footerpart" />
-<!--end-Footer-part-->
-
-<import type="js" file="js.home.jquery#min"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.jquery#ui#custom"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.bootstrap#min"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.jquery#uniform"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.select2#min"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.jquery#dataTables#min"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.matrix"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.matrix#tables"  basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.jquery#min"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.jquery#ui#custom"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.bootstrap#min"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.jquery#uniform"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.select2#min"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.jquery#dataTables#min"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.matrix"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="js.home.matrix#tables"
+		basepath="{:C('PublicDirectory')}" />
 </body>
 </html>

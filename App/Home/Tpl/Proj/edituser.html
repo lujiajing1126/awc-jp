@@ -12,6 +12,7 @@
 <import type="css" file="css.home.matrix-media"  basepath="{:C('PublicDirectory')}" />
 <import type="css" file="font-awesome.css.font-awesome"  basepath="{:C('PublicDirectory')}" />
 <import type="css" file="css.home.jquery#gritter"  basepath="{:C('PublicDirectory')}" />
+<import type="css" file="custom.css.sch" basepath="{:C('PublicDirectory')}" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -70,6 +71,8 @@
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
+			<a href="#myModal" role="button" class="btn" data-toggle="modal"><i
+						class="icon-plus"></i> 添加评委</a>
 				<div class="widget-box">
 					<div class="widget-title">
 						<span class="icon"><i class="icon-th"></i></span>
@@ -115,6 +118,44 @@
 <!--Footer-part-->
 <include file="_partial:footerpart" />
 <!--end-Footer-part-->
+
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 id="myModalLabel">添加用户</h3>
+		</div>
+		<div class="modal-body">
+		<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>提醒！</strong> 请慎重注册评委，为方便起见，生成6位随机密码
+</div>
+			<form>
+				<div class="control-group">
+					<label class="control-label" for="userid">评委ID：</label>
+					<div class="controls">
+					<input type="text" name="userid" id="userid" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">用户类型：</label>
+					<div class="controls">
+						<select>
+						<option>管理员</option>
+						<option>普通评委</option>
+						</select>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+			<button class="btn btn-primary">立即添加</button>
+		</div>
+	</div>
 
 <import type="js" file="js.home.jquery#min"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.jquery#ui#custom"  basepath="{:C('PublicDirectory')}" />

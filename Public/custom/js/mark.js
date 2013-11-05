@@ -26,6 +26,9 @@ define(function(require, exports, module) {
 			var data = $("#markform").serialize();
 			console.log(data);
 			alert("通过验证，正在提交...");
+			$.ajax({
+				url:$.siteUrl("Mark","")
+			});
 		}
 
 	});
