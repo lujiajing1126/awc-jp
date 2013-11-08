@@ -69,8 +69,6 @@
 		</div>
 		<h1>评委打分</h1>
 		<div id="info">
-		<p id="uid">{$_SESSION["awc_uid"]}</p>
-		<p id="pid">{$pid}</p>
 		</div>
 	</div>
 	<div class="container-fluid">
@@ -132,6 +130,9 @@
     <h3 id="myModalLabel">社团评精打分表 </h3><h3 id="assnname"></h3>
   </div>
   <form id="markform" name="markform">
+  <input name="uid" id="uid" type="hidden" value="{$_SESSION['awc_uid']}" />
+  <input name="pid" id="pid" type="hidden" value="{$pid}" />
+  <input name="aid" id="aid" type="hidden" value="" />
   <div class="modal-body">
     <table width="100%" border="1">
     	<thead>

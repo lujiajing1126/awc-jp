@@ -27,6 +27,15 @@ class MarkAction extends CommonAction {
 	public function addScore(){
 		//post string example:
 		//cwgl=1&zzgj=1&zdlscy=1&stqlpg=1&xxhjs=1&yzzqhd=1&hdyxl=1&hdwczl=1&hdcg=1&xnjl=1&xwjl=1
-
+		$InserRec = D("Record");
+		if (!$InserRec->create()){
+			// 如果创建失败 表示自动验证没有通过 输出错误提示信息
+			$this->ajaxReturn($InserRec->getError(),'JSON');
+		}else{
+			// 验证通过 进行Insert操作，并返回成功信息
+			$InserRec->add();
+			$result = array("res"=>"success");
+			$this->ajaxReturn($result,'JSON');
+		}
 	}
 }

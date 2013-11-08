@@ -1,20 +1,22 @@
 define(function(require, exports, module) {
 	var $ = window.$;
-	require('./common.js');
+	require('./common');
+	require('./helpers');
 	$("#chpro").click(function(){
 		window.location = $.siteUrl("Mark","index",$("#selectpro").select2("val"));
 	});
 	$(document).on("click.mark",'[data-toggle="modal"]',function(){
 		$this = $(this);
-		var pid = $("p#pid").html(),uid = $("p#uid").html(),
+		var pid = $("input#pid").val(),uid = $("input#uid").val(),
 		aid=$this.parent().parent().find(".awcaid").html(),
 		aname=$this.parent().parent().find(".awcname").html();
 		$.getJSON($.siteUrl("Mark","getScore",pid+"/"+aid),function(data){
 			if(data!==null){
-				alert("您已经评过分");
+				$.notice('错误','您已经评过该社团');
 			}else{
 				$("h3#assnname").html(aname);
 				$('#myModal').modal();
+				$('#aid').val(aid);
 			}
 		});
 	});
@@ -23,11 +25,19 @@ define(function(require, exports, module) {
 		var data_array = $("#markform").serializeArray();
 		if($.validateForm1(data_array)){
 			console.log(data_array);
-			var data = $("#markform").serialize();
-			console.log(data);
-			alert("通过验证，正在提交...");
+			$.notice('成功','通过验证，正在提交...');
 			$.ajax({
-				url:$.siteUrl("Mark","")
+				url:$.siteUrl("Mark","addScore"),
+				cache:false,
+				data:data_array,
+				type:'POST',
+				dataType:'JSON',
+				success:function(data){
+					if(data['res']==="success"){
+						$.notice('成功','评分提交成功！');
+						$.refresh(10000);
+					}
+				}
 			});
 		}
 

@@ -16,9 +16,20 @@ class ScheduleModel extends RelationModel{
 					'mapping_type'    =>BELONGS_TO,
 					'foreign_key'	=>'pid',
 					'class_name'    =>'projects',
-					'mapping_fields'	=>'pname,expire',
+					'mapping_fields'	=>'pname,expiredate',
 					'parent_key'	=>'pid',
-					'as_fields' => 'pname,expire',
+					'as_fields' => 'pname,expiredate',
 			),
 	);
+	protected $_validate = array(
+		//多字段验证
+		array('pid,aid','checkifexist','在该场次中已经存在该社团！',1,'callback',1),
+	);
+	protected function checkifexist($data){
+		$map = $data;
+		if($this->where($map)->find())
+			return false;
+		else
+			return TRUE;
+	}
 }

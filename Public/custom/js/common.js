@@ -34,33 +34,22 @@ define(function(require, exports, module) {
 	uptonum["xnjl"]["value"]=10;
 	uptonum["xwjl"]["name"]="社团与校外社团、组织交流合作情况及影响力";
 	uptonum["xwjl"]["value"]=5;
-	$.siteUrl = function(mod,act,param){
-		return "http://"+location.host+"/awc-jp/index.php/"+mod+"/"+act+"/"+param;
-	};
 	$.validateForm1 = function(data){
 		if($.isArray(data)){
-			if(data.length <= 11){
+			if(data.length <= 100){
 				var x;
-				//data数组的大小是11
+				// data数组的大小是14
 				for(x in data)  {
+					if(data[x]['name']!=="pid" && data[x]['name']!=="uid" && data[x]['name']!=="aid"){
 					if(parseInt(data[x]['value']) == null||data[x]['value'] == ""||parseInt(data[x]['value']) == ""){
-						$.gritter.add({
-							// (string | mandatory) the heading of the notification
-							title: 'Error!',
-							// (string | mandatory) the text inside the notification
-							text: '请填写 '+uptonum[data[x]['name']]["name"],
-						});
+						$.notice('Error!','请填写 '+uptonum[data[x]['name']]["name"]);
 						return false;
 					}
 					if(parseInt(data[x]['value']) > uptonum[data[x]['name']]["value"]||parseInt(data[x]['value']) < 0){
-						$.gritter.add({
-							// (string | mandatory) the heading of the notification
-							title: 'Error!',
-							// (string | mandatory) the text inside the notification
-							text: "\""+uptonum[data[x]['name']]["name"]+'\" 分值范围错误，请检查后重新输入！'
-						});
+						$.notice('Error!',"\""+uptonum[data[x]['name']]["name"]+'\" 分值范围错误');
 						return false;
 					}
+				}
 				}
 				return true;
 			}
@@ -68,4 +57,5 @@ define(function(require, exports, module) {
 			alert("传入参数不是数组");
 		}
 	};
+
 });

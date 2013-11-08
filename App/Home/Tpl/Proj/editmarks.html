@@ -83,6 +83,7 @@
 									<th>场次编号</th>
 									<th>场次名称</th>
 									<th>截止日期</th>
+									<th>截止时间</th>
 									<th>维护</th>
 								</tr>
 							</thead>
@@ -91,7 +92,8 @@
 								<tr class="gradeX">
 									<td>{$vo.pid}</td>
 									<td>{$vo.pname}</td>
-									<td>{$vo.expire}</td>
+									<td>{$vo.expiredate}</td>
+									<td>{$vo.expiretime}</td>
 									<td>
 										<button class="btn btn-mini" type="button"><i class="icon-pencil"></i></button>
 										<button class="btn btn-mini" type="button"><i class="icon-remove"></i></button>
@@ -121,17 +123,17 @@
     <h3 id="myModalLabel">添加场次</h3>
   </div>
   <div class="modal-body">
-    <form>
+    <form id="newproject">
     <label for="project">场次名称：</label>
-    <input id="project" name="project" type="text" />
-    <label for="project">截止时间：</label>
-    <input id="project" name="project" type="date" />
-    <input id="project" name="project" type="time" />
+    <input id="pname" name="pname" class="require" type="text" /><span id="perror" class="help-inline"></span>
+    <label for="expiredate">截止时间：</label>
+    <input id="expiredate" class="require" name="expiredate" type="date" />
+    <input id="expiretimeproject" class="require" name="expiretime" type="time" />
     </form>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary">保存修改</button>
+    <button id="submit" type="submit" class="btn btn-primary">新建场次</button>
   </div>
 </div>
 
@@ -146,5 +148,11 @@
 <import type="js" file="js.home.jquery#dataTables#min"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix#tables"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="js.home.jquery#gritter#min"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.sea"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.config"  basepath="{:C('PublicDirectory')}" />
+<script>
+seajs.use("custom/js/editmarks");
+</script>
 </body>
 </html>

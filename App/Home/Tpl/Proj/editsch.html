@@ -155,13 +155,13 @@
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>提醒！</strong> 请不要在已有计划中重复添加已有社团，以免出错
 </div>
-			<form>
+			<form id="addsch">
 				<div class="control-group">
 					<label class="control-label" for="project">场次选择：</label>
 					<div class="controls">
-						<select>
+						<select name="pid">
 						<volist name="list2" id="vo2">
-						<option>{$vo2.pname}</option>
+						<option value="{$vo2.pid}">{$vo2.pname}</option>
 						</volist>
 						</select>
 					</div>
@@ -169,9 +169,9 @@
 				<div class="control-group">
 					<label class="control-label">添加社团：</label>
 					<div class="controls">
-						<select multiple>
+						<select multiple name="aids[]">
 						<volist name="list3" id="vo3">
-						<option>{$vo3.name}</option>
+						<option value="{$vo3.aid}">{$vo3.name}</option>
 						</volist>
 						</select>
 					</div>
@@ -180,7 +180,7 @@
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-			<button class="btn btn-primary">提交计划</button>
+			<button id="submit" class="btn btn-primary">提交计划</button>
 		</div>
 	</div>
 
@@ -200,5 +200,11 @@
 		basepath="{:C('PublicDirectory')}" />
 	<import type="js" file="js.home.matrix#tables"
 		basepath="{:C('PublicDirectory')}" />
+<import type="js" file="js.home.jquery#gritter#min"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.sea"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.config"  basepath="{:C('PublicDirectory')}" />
+<script>
+seajs.use("custom/js/editschedule");
+</script>
 </body>
 </html>
