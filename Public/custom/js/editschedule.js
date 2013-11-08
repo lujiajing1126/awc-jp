@@ -2,7 +2,6 @@ define(function(require, exports, module) {
 	'use strict';
 	require("./helpers");
 	$("#submit").click(function(){
-		alert("!!!");
 		var dataarray = $("form#addsch").serializeArray(),
 		data = $("form#addsch").serialize();
 		console.log(dataarray);
