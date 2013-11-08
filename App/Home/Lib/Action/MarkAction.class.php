@@ -27,6 +27,6 @@ class MarkAction extends CommonAction {
 	public function addScore(){
 		//post string example:
 		//cwgl=1&zzgj=1&zdlscy=1&stqlpg=1&xxhjs=1&yzzqhd=1&hdyxl=1&hdwczl=1&hdcg=1&xnjl=1&xwjl=1
-		
+
 	}
 }
