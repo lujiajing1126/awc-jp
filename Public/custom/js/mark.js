@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 				success:function(data){
 					if(data['res']==="success"){
 						$.notice('成功','评分提交成功！');
-						$.refresh(10000);
+						$.refresh(1000);
 					}
 				}
 			});

@@ -133,19 +133,19 @@
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>提醒！</strong> 请慎重注册评委，为方便起见，生成6位随机密码
 </div>
-			<form>
+			<form id="adduserform">
 				<div class="control-group">
 					<label class="control-label" for="userid">评委ID：</label>
 					<div class="controls">
-					<input type="text" name="userid" id="userid" />
+					<input type="text" name="username" id="username" class="require" />
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">用户类型：</label>
 					<div class="controls">
-						<select>
-						<option>管理员</option>
-						<option>普通评委</option>
+						<select name="role" id="role">
+						<option value="admin">管理员</option>
+						<option value="user">普通评委</option>
 						</select>
 					</div>
 				</div>
@@ -153,7 +153,7 @@
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-			<button class="btn btn-primary">立即添加</button>
+			<button class="btn btn-primary" id="submit">立即添加</button>
 		</div>
 	</div>
 
@@ -165,5 +165,11 @@
 <import type="js" file="js.home.jquery#dataTables#min"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix"  basepath="{:C('PublicDirectory')}" />
 <import type="js" file="js.home.matrix#tables"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="js.home.jquery#gritter#min"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.sea"  basepath="{:C('PublicDirectory')}" />
+<import type="js" file="seajs.config"  basepath="{:C('PublicDirectory')}" />
+<script>
+seajs.use("custom/js/adduser");
+</script>
 </body>
 </html>

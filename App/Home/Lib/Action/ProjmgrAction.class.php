@@ -64,18 +64,39 @@ class ProjmgrAction extends CommonAction {
 		$data ['pid'] = $_POST ['pid'];
 		$aids = $_POST ['aids'];
 		foreach ( $aids as $value ) {
-			$data['aid'] = $value;
-			if (! $InserRec->create ($data)) {
+			$data ['aid'] = $value;
+			if (! $InserRec->create ( $data )) {
 				// 如果创建失败 表示自动验证没有通过 输出错误提示信息
 				$ret ["error"] = $InserRec->getError ();
 				$this->ajaxReturn ( $ret, 'JSON' );
 			} else {
 				// 验证通过 进行Insert操作，并返回成功信息
-				$InserRec->data($data)->add();
+				$InserRec->data ( $data )->add ();
 			}
 		}
 		$result = array (
 				"res" => "success"
+		);
+		$this->ajaxReturn ( $result, 'JSON' );
+	}
+	public function adduser() {
+		// post example:
+		// username=""&role=""
+		$InserRec = D ( "Newuser" );
+		$data['username'] = $_POST['username'];
+		$data['password'] = md5("123456");
+		$data['role'] = $_POST['role'];
+		if (! $InserRec->create ($data)) {
+			// 如果创建失败 表示自动验证没有通过 输出错误提示信息
+			$ret ["error"] = $InserRec->getError ();
+			$this->ajaxReturn ( $ret, 'JSON' );
+		} else {
+			// 验证通过 进行Insert操作，并返回成功信息
+			$InserRec->add ();
+		}
+		$result = array (
+				"res" => "success",
+				"passwd" => "123456",
 		);
 		$this->ajaxReturn ( $result, 'JSON' );
 	}
