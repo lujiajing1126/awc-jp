@@ -26,4 +26,20 @@ class AwcmarkAction extends CommonAction {
 		$res = $record->where($data)->select();
 		$this->ajaxReturn($res,'JSON');
 	}
+	public function addAdminScore(){
+		//postexample:
+		//aid=FD-H-USS-GJ002&
+		//dxtshd=&xxhd=&cghd=&njsc=&cxda=&cwcwfzr=&cwcwfb=&njsczm=&wlxxh=&szdh=
+		//&szsl=&qtbmhz=&tshdcg=&pjdbh=&qxdy=&fgbmpf=&szpf=
+		$InserRec = D("Adminrecord");
+		if (!$InserRec->create()){
+			// 如果创建失败 表示自动验证没有通过 输出错误提示信息
+			$this->ajaxReturn($InserRec->getError(),'JSON');
+		}else{
+			// 验证通过 进行Insert操作，并返回成功信息
+			$InserRec->add();
+			$result = array("res"=>"success");
+			$this->ajaxReturn($result,'JSON');
+		}
+	}
 }

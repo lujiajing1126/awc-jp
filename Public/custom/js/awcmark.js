@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	var $ = window.$;
-	require('./common');
+	require('./common2');
 	require('./helpers');
 	$("#chpro").click(function(){
 		window.location = $.siteUrl("Awcmark","index",$("#selectpro").select2("val"));
@@ -19,5 +19,27 @@ define(function(require, exports, module) {
 				$('#aid').val(aid);
 			}
 		});
+	});
+	$("#markform").on("submit",function(){
+		event.preventDefault();
+		var data_array = $("#markform").serializeArray();
+		if($.validateForm2(data_array)){
+			console.log(data_array);
+			$.notice('成功','通过验证，正在提交...');
+			$.ajax({
+				url:$.siteUrl("Awcmark","addAdminScore"),
+				cache:false,
+				data:data_array,
+				type:'POST',
+				dataType:'JSON',
+				success:function(data){
+					if(data['res']==="success"){
+						$.notice('成功','评分提交成功！');
+						$.refresh(1000);
+					}
+				}
+			});
+		}
+
 	});
 });

@@ -42,7 +42,7 @@
     <li class="submenu active"> <a href="#"><i class="icon icon-pencil"></i> <span>评分</span> <span class="label label-important">2</span></a>
       <ul>
         <li><a href="{:U('Mark/index')}">评委评分</a></li>
-        <li><a href="{:U('Mark/index')}">社团部评分</a></li>
+        <li><a href="{:U('Awcmark/index')}">社团部评分</a></li>
       </ul>
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">5</span></a>
@@ -130,14 +130,16 @@
     <h3 id="myModalLabel">社团评精打分表 </h3><h3 id="assnname"></h3>
   </div>
   <form id="markform" name="markform">
-  <input name="uid" id="uid" type="hidden" value="{$_SESSION['awc_uid']}" />
-  <input name="pid" id="pid" type="hidden" value="{$pid}" />
   <input name="aid" id="aid" type="hidden" value="" />
   <div class="modal-body">
+  <div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>备注</strong> 请用百分比换算成分数直接打分，如大型、特色活动15%，最高分为15分。
+	</div>
     <table width="100%" border="1">
     	<thead>
-    		<th width="20%">评分项目</th>
-    		<th width="25%">具体要求</th>
+    		<th width="25%">评分项目</th>
+    		<th width="20%">具体要求</th>
     		<th></th>
     		<th width="5%" overflow="hidden">打分</th>
     	</thead>
@@ -145,87 +147,86 @@
     		<td rowspan="13">社团年度表现评分(45分)</td>
     		<td rowspan="3">社团活动（30%）</td>
     		<td>大型、特色活动（15%）</td>
-    		<td><input type="number" name="cwgl" id="cwgl" class="awc-mark" /></td>
+    		<td><input type="number" name="dxtshd" id="dxtshd" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>小型活动（15%）</td>
-    		<td><input type="number" name="zzgj" id="zzgj" class="awc-mark" /></td>
+    		<td><input type="number" name="xxhd" id="xxhd" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>常规活动（15%）</td>
-    		<td><input type="number" name="zdlscy" id="zdlscy" class="awc-mark" /></td>
+    		<td><input type="number" name="cghd" id="cghd" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td rowspan="2">社团档案（20%）</td>
     		<td>年鉴手册（10%）</td>
-    		<td><input type="number" name="stqlpg" id="stqlpg" class="awc-mark" /></td>
+    		<td><input type="number" name="njsc" id="njsc" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>诚信档案（10%）</td>
-    		<td><input type="number" name="xxhjs" id="xxhjs" class="awc-mark" /></td>
+    		<td><input type="number" name="cxda" id="cxda" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td rowspan="3">社团财务状况（30%）</td>
     		<td>社团财务场务负责人设置及制度评分(10%)</td>
-    		<td><input type="number" name="yzzqhd" id="yzzqhd" class="awc-mark" /></td>
+    		<td><input type="number" name="cwcwfzr" id="cwcwfzr" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社团部财务场务副部评分(10%)</td>
-    		<td><input type="number" name="hdyxl" id="hdyxl" class="awc-mark" /></td>
+    		<td><input type="number" name="cwcwfb" id="cwcwfb" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社团年鉴手册账目评分   (10%)</td>
-    		<td><input type="number" name="hdwczl" id="hdwczl" class="awc-mark" /></td>
+    		<td><input type="number" name="njsczm" id="njsczm" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社团网络信息化建设（5%）</td>
     		<td>社团网络信息化建设或社团之家网上平台建设(5%)</td>
-    		<td><input type="number" name="hdcg" id="hdcg" class="awc-mark" /></td>
+    		<td><input type="number" name="wlxxh" id="wlxxh" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td rowspan="3">与校内各部门合作情况(5%)</td>
     		<td>社长大会（2%）</td>
-    		<td><input type="number" name="xnjl" id="xnjl" class="awc-mark" /></td>
+    		<td><input type="number" name="szdh" id="szdh" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社长沙龙（2%）</td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="szsl" id="szsl" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>以及与其他部门合作情况（如团委院系学生会）（1%）</td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="qtbmhz" id="qtbmhz" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社团特色活动成果(10%)</td>
     		<td></td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="tshdcg" id="tshdcg" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社团评精答辩会（30分）</td>
     		<td></td>
     		<td></td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="pjdbh" id="pjdbh" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>全校调研(10分)</td>
     		<td></td>
     		<td></td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="qxdy" id="qxdy" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>分管部门评分（10分）</td>
     		<td></td>
     		<td></td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="fgbmpf" id="fgbmpf" class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>社长评分（5分）</td>
     		<td></td>
     		<td></td>
-    		<td><input type="number" name="xwjl" id="xwjl" class="awc-mark" /></td>
+    		<td><input type="number" name="szpf" id="szpf" class="awc-mark require" /></td>
     	</tr>
     </table>
-    <p>备注：请用百分比换算成分数直接打分，如大型、特色活动15%，最高分为15分。</p>
   </div>
 
   <div class="modal-footer">
