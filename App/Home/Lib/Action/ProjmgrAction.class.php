@@ -17,6 +17,20 @@ class ProjmgrAction extends CommonAction {
 		$this->display ( "Proj/editmarks" );
 	}
 	public function showresult() {
+		$ProjListInfo = D('Project');
+		$res2 = $ProjListInfo->select();
+		$this->assign("projlist",$res2);
+		$pid = $_GET["_URL_"][2]?$_GET["_URL_"][2]:"1";
+		$Model = new Model();
+		$sql = "SELECT paid,pa.pid,projects.pname,pa.aid,club.`name`,adminrec.total AS `awc_rec`,AVG(record.total) AS `voter_rec` FROM pa
+LEFT JOIN club ON pa.aid = club.aid
+LEFT JOIN adminrec ON pa.aid = adminrec.aid
+LEFT JOIN record ON pa.pid = record.pid AND pa.aid = record.aid
+LEFT JOIN projects ON pa.pid = projects.pid
+WHERE pa.pid = ".$pid."
+GROUP BY paid";
+		$res = $Model->query($sql);
+		$this->assign ( 'list', $res );
 		$this->display ( "Proj/showret" );
 	}
 	public function editsch() {

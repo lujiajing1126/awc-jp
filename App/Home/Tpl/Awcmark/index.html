@@ -76,12 +76,9 @@
 		<div class="row-fluid">
 			<div class="span12">
 			<span>场次选择：</span>
-			<select id="selectpro">
-				<volist name="projlist" id="vo2">
-					<option value={$vo2.pid} >{$vo2.pname}场次</option>
-				</volist>
+			<select id="selectpro" disabled>
 			</select>
-			<button class="btn btn-primary" id="chpro"><i class="icon-play"></i> 切换场次</button>
+			<button class="btn btn-primary" id="chpro" disabled><i class="icon-play"></i> 切换场次</button>
 				<div class="widget-box">
 					<div class="widget-title">
 						<span class="icon"><i class="icon-th"></i></span>
@@ -206,7 +203,7 @@
     		<td>社团评精答辩会（30分）</td>
     		<td></td>
     		<td></td>
-    		<td><input type="number" name="pjdbh" id="pjdbh" class="awc-mark require" /></td>
+    		<td><input type="number" disabled class="awc-mark require" /></td>
     	</tr>
     	<tr>
     		<td>全校调研(10分)</td>
@@ -227,6 +224,7 @@
     		<td><input type="number" name="szpf" id="szpf" class="awc-mark require" /></td>
     	</tr>
     </table>
+    <input type="hidden" value="" id="total" name="total" />
   </div>
 
   <div class="modal-footer">

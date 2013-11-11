@@ -22,6 +22,12 @@ define(function(require, exports, module) {
 	});
 	$("#markform").on("submit",function(){
 		event.preventDefault();
+		var total = parseInt($.getTotal("#markform"));
+		if(total == "" || total == null){
+			alert("错误，请检查表单");
+		}
+		console.log(total);
+		$("#total").val(total);
 		var data_array = $("#markform").serializeArray();
 		if($.validateForm2(data_array)){
 			console.log(data_array);

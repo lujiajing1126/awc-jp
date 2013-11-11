@@ -37,4 +37,11 @@ define(function(require, exports, module) {
 				return true;
 		}
 	};
+	$.getTotal = function(selector){
+		var res = 0;
+		$(selector).find('input[type="number"]').each(function(){
+			res += parseInt($(this).val()||0);
+		});
+		return res;
+	}
 });

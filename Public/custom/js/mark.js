@@ -22,6 +22,12 @@ define(function(require, exports, module) {
 	});
 	$("#markform").on("submit",function(){
 		event.preventDefault();
+		var total = parseInt($.getTotal("#markform"));
+		if(total == "" || total == null){
+			alert("错误，请检查表单");
+		}
+		console.log(total);
+		$("#total").val(total);
 		var data_array = $("#markform").serializeArray();
 		if($.validateForm1(data_array)){
 			console.log(data_array);
@@ -36,6 +42,8 @@ define(function(require, exports, module) {
 					if(data['res']==="success"){
 						$.notice('成功','评分提交成功！');
 						$.refresh(1000);
+					}else{
+						$.notice('错误','评分失败TAT');
 					}
 				}
 			});
