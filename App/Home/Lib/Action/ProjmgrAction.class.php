@@ -114,4 +114,58 @@ GROUP BY paid";
 		);
 		$this->ajaxReturn ( $result, 'JSON' );
 	}
+	public function showrec() {
+		$ProjListInfo = D('Project');
+		$res2 = $ProjListInfo->select();
+		$this->assign("projlist",$res2);
+		$Rec = D ( "Record" );
+		$pid = $_GET["_URL_"][2]?$_GET["_URL_"][2]:"1";
+		$where = array("pid"=>$pid);
+		$res = $Rec->where($where)->select ();
+		$this->assign ( 'list', $res );
+		$this->display('Proj/showrec');
+	}
+	public function delrec() {
+		$Rec = D ( "Record" );
+		if (! $Rec->create ()) {
+			$ret ["error"] = $Rec->getError ();
+			$this->ajaxReturn ( $ret, 'JSON' );
+		} else {
+			// 验证通过 进行DELECT操作，并返回成功信息
+			$Rec->delete();
+			$result = array (
+					"res" => "success"
+			);
+			$this->ajaxReturn ( $result, 'JSON' );
+		}
+	}
+	public function chuser() {
+		$Rec = D ( "Edituser" );
+		$uid = (int)$_POST['uid'];
+		$data['role'] = $_POST['role'];
+		if($uid==null || $uid=="")  {
+			$ret ["error"] = "评委编号不能为空";
+			$this->ajaxReturn ( $ret, 'JSON' );
+		}
+		$password = $_POST['passwd'];
+		if($password!=null && $password!="")  {
+			$data['password'] = md5($password);
+		}
+		if (! $Rec->create ($data)) {
+			$ret ["error"] = $Rec->getError ();
+			$this->ajaxReturn ( $ret, 'JSON' );
+		} else {
+			// 验证通过 进行DELECT操作，并返回成功信息
+			$Rec->where('uid='.$uid)->save($data);
+			$result = array (
+					"res" => "success",
+					"redirect" =>($_SESSION['awc_uid']==$uid)?1:0,
+			);
+			if($password!=null && $password!="")  {
+				$result["passwd"] = $password;
+			}
+			$this->ajaxReturn ( $result, 'JSON' );
+		}
+	}
+
 }

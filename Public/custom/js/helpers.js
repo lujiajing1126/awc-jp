@@ -10,9 +10,10 @@ define(function(require, exports, module) {
 			alert(title+" : "+msg);
 		}
 	};
-	$.refresh = function(sec) {
+	$.refresh = function(sec,location) {
 		sec = sec || '0';
-		setTimeout(function(){window.location = window.location;}, sec);
+		location = location||window.location;
+		setTimeout(function(){window.location = location;}, sec);
 	};
 	$.siteUrl = function(mod, act, param) {
 		if (typeof param === "undefined" || param === null || param === "") {

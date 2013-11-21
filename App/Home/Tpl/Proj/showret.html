@@ -48,33 +48,29 @@
 	</div>
 	<!--close-top-serch-->
 	<!--sidebar-menu-->
-	<div id="sidebar">
-		<a href="#" class="visible-phone"><i class="icon icon-home"></i>
-			Dashboard</a>
-		<ul>
-			<li><a href="{:U('Index/index')}"><i class="icon icon-home"></i>
-					<span>仪表盘</span></a></li>
-			<li><a href="{:U('Assn/index')}"><i class="icon icon-th"></i>
-					<span>社团查询</span></a></li>
-			<li class="submenu"><a href="#"><i class="icon icon-pencil"></i>
-					<span>评分</span> <span class="label label-important">2</span></a>
-				<ul>
-					<li><a href="{:U('Mark/index')}">评委评分</a></li>
-					<li><a href="{:U('Awcmark/index')}">社团部评分</a></li>
-				</ul></li>
-			<li class="submenu active"><a href="#"><i
-					class="icon icon-file"></i> <span>项目管理</span> <span
-					class="label label-important">5</span></a>
-				<ul>
-					<li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
-					<li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
-					<li><a href="{:U('Projmgr/showresult')}">查询结果</a></li>
-					<li><a href="{:U('Projmgr/editsch')}">答辩计划管理</a></li>
-					<li><a href="{:U('Projmgr/editassn')}">社团信息维护</a></li>
-				</ul></li>
-		</ul>
-	</div>
-	<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+  <ul>
+    <li class="active"><a href="{:U('Index/index')}"><i class="icon icon-home"></i> <span>仪表盘</span></a> </li>
+    <li> <a href="{:U('Assn/index')}"><i class="icon icon-th"></i> <span>社团查询</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-pencil"></i> <span>评分</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li><a href="{:U('Mark/index')}">评委评分</a></li>
+        <li><a href="{:U('Awcmark/index')}">社团部评分</a></li>
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">6</span></a>
+      <ul>
+        <li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
+        <li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
+        <li><a href="{:U('Projmgr/showrec')}">评分记录管理</a></li>
+        <li><a href="{:U('Projmgr/showresult')}">查询结果</a></li>
+        <li><a href="{:U('Projmgr/editsch')}">答辩计划管理</a></li>
+        <li><a href="{:U('Projmgr/editassn')}">社团信息维护</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!--sidebar-menu-->
 
 	<!--main-container-part-->
 	<div id="content">
@@ -97,6 +93,9 @@
 					</select>
 					<button class="btn btn-primary" id="chpro">
 						<i class="icon-play"></i> 切换场次
+					</button>
+					<button class="btn btn-primary pull-right" id="export">
+						<i class="icon-tasks"></i> 导出本场结果
 					</button>
 					<div class="widget-box">
 						<div class="widget-title">

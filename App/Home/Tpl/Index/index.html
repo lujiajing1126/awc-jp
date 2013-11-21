@@ -43,10 +43,11 @@
         <li><a href="{:U('Awcmark/index')}">社团部评分</a></li>
       </ul>
     </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">5</span></a>
+    <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>项目管理</span> <span class="label label-important">6</span></a>
       <ul>
         <li><a href="{:U('Projmgr/editmarks')}">场次管理</a></li>
         <li><a href="{:U('Projmgr/edituser')}">评委管理</a></li>
+        <li><a href="{:U('Projmgr/showrec')}">评分记录管理</a></li>
         <li><a href="{:U('Projmgr/showresult')}">查询结果</a></li>
         <li><a href="{:U('Projmgr/editsch')}">答辩计划管理</a></li>
         <li><a href="{:U('Projmgr/editassn')}">社团信息维护</a></li>
@@ -68,50 +69,22 @@
   <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
-        <li class="bg_lg span3"> <a href="charts.html"> <i class="icon-signal"></i> Charts</a> </li>
-        <li class="bg_ly"> <a href="widgets.html"> <i class="icon-inbox"></i><span class="label label-success">101</span> Widgets </a> </li>
-        <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>
-        <li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>
-        <li class="bg_lo span3"> <a href="form-common.html"> <i class="icon-th-list"></i> Forms</a> </li>
-        <li class="bg_ls"> <a href="buttons.html"> <i class="icon-tint"></i> Buttons</a> </li>
-        <li class="bg_lb"> <a href="interface.html"> <i class="icon-pencil"></i>Elements</a> </li>
-        <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li>
-        <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li>
+        <li class="bg_lb"> <a href=""> <i class="icon-dashboard"></i> <span class="label label-important">20</span> 仪表盘 </a> </li>
+        <li class="bg_lo"> <a href="{:U('Assn/index')}"> <i class="icon-th"></i>查询社团</a> </li>
+        <li class="bg_lb"> <a href="{:U('Mark/index')}"> <i class="icon-pencil"></i>评委打分</a> </li>
 
       </ul>
     </div>
 <!--End-Action boxes-->
-
-<!--Chart-box-->
-    <div class="row-fluid">
-      <div class="widget-box">
-        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5>Site Analytics</h5>
-        </div>
-        <div class="widget-content" >
-          <div class="row-fluid">
-            <div class="span9">
-              <div class="chart"></div>
-            </div>
-            <div class="span3">
-              <ul class="site-stats">
-                <li class="bg_lh"><i class="icon-user"></i> <strong>1</strong> <small>Total Users</small></li>
-                <li class="bg_lh"><i class="icon-plus"></i> <strong>1</strong> <small>New Users </small></li>
-                <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>0</strong> <small>Total Schedule</small></li>
-                <li class="bg_lh"><i class="icon-tag"></i> <strong>9540</strong> <small>Total Orders</small></li>
-                <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
-                <li class="bg_lh"><i class="icon-globe"></i> <strong>0</strong> <small>Online Orders</small></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--End-Chart-box-->
     <hr/>
     <div class="row-fluid">
-      <div class="span6"></div>
+      <div class="span6">
+      <h3>评委须知：</h3>
+      <ol>
+      <li>如需查询社团信息，请点击<a href="{:U('Assn/index')}" style="font-weight:bold;text-decoration:underline;">社团查询</a>，可以通过排序、关键字搜索方式查询</li>
+      <li>各位评委请进入<a href="{:U('Mark/index')}" style="font-weight:bold;text-decoration:underline;">评委打分</a>，选择相应的场次打分，可以在测试场中进行尝试，正式打分请慎重提交，提交后不能修改，如需修改请联系社团部工作人员</li>
+      </ol>
+      </div>
       <div class="span6"></div>
     </div>
   </div>

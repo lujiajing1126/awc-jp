@@ -6,7 +6,7 @@ class MarkAction extends CommonAction {
 		$this->assign("projlist",$res2);
 		$pid = $_GET["_URL_"][2]?$_GET["_URL_"][2]:"1";
 		$ClubsInfo = D('Schedule');
-		$res = $ClubsInfo->where('pid='.$pid)->relation(true)->Select();
+		$res = $ClubsInfo->where('pid='.$pid)->relation(true)->order('paid')->Select();
 		$this->assign('list',$res);
 		$this->assign('pid',$pid);
 		$this->display();

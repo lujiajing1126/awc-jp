@@ -20,12 +20,9 @@
 	basepath="{:C('PublicDirectory')}" />
 <import type="css" file="css.home.jquery#gritter"
 	basepath="{:C('PublicDirectory')}" />
-<import type="css" file="custom.css.sch"
-	basepath="{:C('PublicDirectory')}" />
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800'
 	rel='stylesheet' type='text/css'>
-
 </head>
 <body>
 
@@ -80,45 +77,50 @@
 		<div id="content-header">
 			<div id="breadcrumb">
 				<a href="#" title="Go to Home" class="tip-bottom"><i
-					class="icon-home"></i> Home</a> <a href="#" class="current">评精计划表</a>
+					class="icon-home"></i> Home</a> <a href="#" class="current">评分记录管理</a>
 			</div>
-			<h1>计划表管理</h1>
+			<h1>评分记录管理</h1>
 		</div>
 		<div class="container-fluid">
 			<hr>
 			<div class="row-fluid">
 				<div class="span12">
-					<a href="#myModal" role="button" class="btn" data-toggle="modal"><i
-						class="icon-plus"></i> 添加计划</a>
+					<span>场次选择：</span>
+					<select id="selectpro" style="width:250px;">
+						<volist name="projlist" id="vo2">
+						<option value={$vo2.pid}>{$vo2.pname}场次</option>
+						</volist>
+					</select>
+					<button class="btn btn-primary" id="chpro">
+						<i class="icon-play"></i> 切换场次
+					</button>
 					<div class="widget-box">
 						<div class="widget-title">
 							<span class="icon"><i class="icon-th"></i></span>
-							<h5>计划表</h5>
+							<h5>结果</h5>
 						</div>
 						<div class="widget-content nopadding">
 							<table class="table table-bordered data-table">
 								<thead>
 									<tr>
 										<th>记录编号</th>
-										<th>场次编号</th>
-										<th>场次名称</th>
-										<th>参与社团编号</th>
-										<th>参与社团名称</th>
-										<th>维护</th>
+										<th>评委ID</th>
+										<th>被评社团编号</th>
+										<th>被评场次</th>
+										<th>评分总分</th>
+										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody>
 									<volist name="list" id="vo">
 									<tr class="gradeX">
-										<td>{$vo.paid}</td>
-										<td>{$vo.pid}</td>
-										<td>{$vo.pname}</td>
+										<td class="pwid">{$vo.rid}</td>
+										<td>{$vo.uid}</td>
 										<td>{$vo.aid}</td>
-										<td>{$vo.name}</td>
+										<td>{$vo.pid}</td>
+										<td>{$vo.total}</td>
 										<td>
-											<button class="btn btn-mini" type="button">
-												<i class="icon-remove"></i>
-											</button>
+											<button class="btn awc-del"><i class="icon-remove-sign"></i> Del</button>
 										</td>
 									</tr>
 									</volist>
@@ -137,49 +139,6 @@
 	<include file="_partial:footerpart" />
 	<!--end-Footer-part-->
 
-
-	<!-- Modal -->
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"
-				aria-hidden="true">×</button>
-			<h3 id="myModalLabel">添加计划</h3>
-		</div>
-		<div class="modal-body">
-		<div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>提醒！</strong> 请不要在已有计划中重复添加已有社团，以免出错
-</div>
-			<form id="addsch">
-				<div class="control-group">
-					<label class="control-label" for="project">场次选择：</label>
-					<div class="controls">
-						<select name="pid">
-						<volist name="list2" id="vo2">
-						<option value="{$vo2.pid}">{$vo2.pname}</option>
-						</volist>
-						</select>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">添加社团：</label>
-					<div class="controls">
-						<select multiple name="aids[]">
-						<volist name="list3" id="vo3">
-						<option value="{$vo3.aid}">{$vo3.name}</option>
-						</volist>
-						</select>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-			<button id="submit" class="btn btn-primary">提交计划</button>
-		</div>
-	</div>
-
 	<import type="js" file="js.home.jquery#min"
 		basepath="{:C('PublicDirectory')}" />
 	<import type="js" file="js.home.jquery#ui#custom"
@@ -196,11 +155,13 @@
 		basepath="{:C('PublicDirectory')}" />
 	<import type="js" file="js.home.matrix#tables"
 		basepath="{:C('PublicDirectory')}" />
-<import type="js" file="js.home.jquery#gritter#min"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="seajs.sea"  basepath="{:C('PublicDirectory')}" />
-<import type="js" file="seajs.config"  basepath="{:C('PublicDirectory')}" />
-<script>
-seajs.use("custom/js/editschedule");
-</script>
+	<import type="js" file="js.home.jquery#gritter#min"
+		basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="seajs.sea" basepath="{:C('PublicDirectory')}" />
+	<import type="js" file="seajs.config"
+		basepath="{:C('PublicDirectory')}" />
+	<script>
+		seajs.use("custom/js/showrec");
+	</script>
 </body>
 </html>
