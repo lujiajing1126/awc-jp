@@ -29,7 +29,7 @@ LEFT JOIN projects ON pa.pid = projects.pid
 WHERE pa.pid = ".$pid."
 GROUP BY paid";
 		$res = $Model->query($sql);
-		$title = array("计划表编号","场次编号","场次名称","社团编号","社团名称","评委均分","社团部评分","总分");
+		$title = array("计划表编号","场次编号","场次名称","社团编号","社团名称","社团部评分","评委均分","总分");
 		$this->outputExcel($title,$res,'b');
 	}
 	protected function outputExcel($title,$data,$mod="d",$output="export_result.xlsx")  {
