@@ -21,6 +21,7 @@ class ProjmgrAction extends CommonAction {
 		$res2 = $ProjListInfo->select();
 		$this->assign("projlist",$res2);
 		$pid = $_GET["_URL_"][2]?$_GET["_URL_"][2]:"1";
+		$this->assign("current_pid",$pid);
 		$Model = new Model();
 		$sql = "SELECT paid,pa.pid,projects.pname,pa.aid,club.`name`,adminrec.total AS `awc_rec`,AVG(record.total) AS `voter_rec` FROM pa
 LEFT JOIN club ON pa.aid = club.aid

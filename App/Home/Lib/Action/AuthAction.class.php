@@ -24,6 +24,6 @@ class AuthAction extends Action {
 	}
 	public function logout()  {
 		$_SESSION = array();
-		$this->redirect("Auth/index");
+		$this->redirect("Index/index");
 	}
 }
