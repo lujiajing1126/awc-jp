@@ -66,7 +66,7 @@ GROUP BY paid";
 					$objActSheet->setCellValue($column, $val);
 					$i++;
 				}
-				$objActSheet->setCellValue("H".$pointer, "=SUM(F".$pointer.":G".$pointer.")");
+				$objActSheet->setCellValue("H".$pointer, "=F".$pointer."+G".$pointer."*0.3");
 				$pointer++;
 			}
 		}

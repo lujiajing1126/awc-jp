@@ -125,7 +125,7 @@
 										<td>{$vo.name}</td>
 										<td>{$vo.voter_rec}</td>
 										<td>{$vo.awc_rec}</td>
-										<td>{$vo['voter_rec']+$vo['awc_rec']}</td>
+										<td><?=$vo['voter_rec']*0.3+$vo['awc_rec']?></td>
 									</tr>
 									</volist>
 								</tbody>
