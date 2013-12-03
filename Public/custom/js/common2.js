@@ -8,7 +8,7 @@ define(function(require, exports, module) {
 				// data数组的大小是14
 				for(x in data)  {
 					if(data[x]['name']!=="pid" && data[x]['name']!=="uid" && data[x]['name']!=="aid"){
-					if(parseInt(data[x]['value']) == null||data[x]['value'] == ""||parseInt(data[x]['value']) == ""){
+					if(parseInt(data[x]['value']) == null||data[x]['value'] == ""){
 						$.notice('Error!','请填写 '+uptonum[data[x]['name']]["name"]);
 						return false;
 					}

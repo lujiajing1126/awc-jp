@@ -2,6 +2,7 @@ define(function(require, exports, module) {
 	var $ = window.$;
 	require('./common2');
 	require('./helpers');
+	var data = require('./awcmark.json');
 	$("#chpro").click(function(){
 		window.location = $.siteUrl("Awcmark","index",$("#selectpro").select2("val"));
 	});
@@ -22,7 +23,7 @@ define(function(require, exports, module) {
 	});
 	$("#markform").on("submit",function(){
 		event.preventDefault();
-		var total = parseInt($.getTotal("#markform"));
+		var total = parseInt($.getTotal("#markform",data));
 		if(total == "" || total == null){
 			alert("错误，请检查表单");
 		}

@@ -38,10 +38,15 @@ define(function(require, exports, module) {
 				return true;
 		}
 	};
-	$.getTotal = function(selector){
+	$.getTotal = function(selector,data){
+		data = data || {};
 		var res = 0;
 		$(selector).find('input[type="number"]').each(function(){
-			res += parseInt($(this).val()||0);
+			if(data[$(this).attr('name')]["rate"]){
+				res += parseFloat($(this).val()*data[$(this).attr('name')]["rate"]||0);
+			} else{
+				res += parseInt($(this).val()||0);
+			}
 		});
 		return res;
 	}
